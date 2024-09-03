@@ -67,17 +67,6 @@ function onUpdate(dc as Dc) as Void {
     var weekdayArray = ["Day", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"] as Array<String>;
     var monthArray = ["Month", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"] as Array<String>;
    
-   
-    /*----------Alarms and Notify------------------------------*/
-    var userNotify = "0";
-    if (mySettings.notificationCount != null) {
-        userNotify = Lang.format("$1$", [mySettings.notificationCount.toNumber().format("%2d")]);
-    }
-
-    var userAlarm = "0";
-    if (mySettings.alarmCount != null) {
-        userAlarm = Lang.format("$1$", [mySettings.alarmCount.toNumber().format("%2d")]);
-    }
 
     /*----------Battery------------------------------*/
     var userBattery = "0";
@@ -171,17 +160,20 @@ function onUpdate(dc as Dc) as Void {
     dc.drawText( 345 *screenWidthX,centerX , wordFont, userCAL, Graphics.TEXT_JUSTIFY_CENTER );
 
     /*---------------Draw Battery---------------*/
-    dc.setColor(0x17231B, Graphics.COLOR_TRANSPARENT);  
+     
     if (batteryMeter >= 10 && batteryMeter <= 32) {
-        dc.fillRectangle(centerX * 350 / 360, centerX * 135 / 360, 9, 50 / 14);
+        //Red
+        dc.setColor(0xB00B1E, Graphics.COLOR_TRANSPARENT); 
+        dc.fillRectangle(centerX * 350 / 360, centerX * 88 / 360, 9, 15);
     } else if (batteryMeter >= 33 && batteryMeter <= 65) {
-        dc.fillRectangle(centerX * 350 / 360, centerX * 125 / 360, 9, 50 / 14);
-        dc.fillRectangle(centerX * 350 / 360, centerX * 135 / 360, 9, 50 / 14);
+       //Yellow
+       dc.setColor(0xFFFF00, Graphics.COLOR_TRANSPARENT); 
+        dc.fillRectangle(centerX * 350 / 360, centerX * 88 / 360, 9,15 );
     } else if (batteryMeter >= 66) {
-        dc.fillRectangle(centerX * 350 / 360, centerX * 115 / 360, 9, 50 / 14);
-        dc.fillRectangle(centerX * 350 / 360, centerX * 125 / 360, 9, 50 / 14);
-        dc.fillRectangle(centerX * 350 / 360, centerX * 135 / 360, 9, 50 / 14);
-    }else{}
+       //Nothing
+    }else{
+        //Nothing
+    }
 
 }
 /*            _     _ 
@@ -231,25 +223,6 @@ function dogPhase(seconds, steps){
  else{
 venus2X = (214*screenWidthX/360)+((seconds%5)*10);
  }
-
-  
-    //Size Variations Pixel Circle
-    //360 VenuS2 - The Model I designed it for 
-    //390 Size up
-    //416 Size up
-    //454 Size up
-   /* 
-  if (screenHeightY == 390){
-   venus2Y = (200*screenHeightY/360);
-  }
-    if (screenHeightY == 416){
-   venus2Y = (212*screenHeightY/360);
-   venus2X = 120*screenWidthX/360;
-  }
-      if (screenHeightY == 454){
-   venus2Y = (220*screenHeightY/360);
-   venus2X = 130*screenWidthX/360;
-  }*/
 
     if (screenHeightY > 400){
    venus2Y = venus2Y+30;
@@ -817,96 +790,6 @@ private function getHeartRate() {
     // Could still be null if the device doesn't support it
     return heartRate;
 }
-
-
-/*
-  ____        _ _           __  __         _   _    
- |_  /___  __| (_)__ _ __  |  \/  |___ _ _| |_| |_  
-  / // _ \/ _` | / _` / _| | |\/| / _ \ ' \  _| ' \ 
- /___\___/\__,_|_\__,_\__| |_|  |_\___/_||_\__|_||_|
-                                                    
-*/
-/*
-function getHoroscope(month, day) {
-    if (month == 1) { // January
-        if (day <= 19) {
-            return "B"; // Capricorn
-        } else {
-            return "v"; // Aquarius
-        }
-    } else if (month == 2) { // February
-        if (day <= 18) {
-            return "v"; // Aquarius
-        } else {
-            return "@"; // Pisces
-        }
-    } else if (month == 3) { // March
-        if (day <= 20) {
-            return "@"; // Pisces
-        } else {
-            return "w"; // Aries
-        }
-    } else if (month == 4) { // April
-        if (day <= 19) {
-            return "w"; // Aries
-        } else {
-            return "F"; // Taurus
-        }
-    } else if (month == 5) { // May
-        if (day <= 20) {
-            return "F"; // Taurus
-        } else {
-            return "x"; // Gemini
-        }
-    } else if (month == 6) { // June
-        if (day <= 20) {
-            return "x"; // Gemini
-        } else {
-            return "C"; // Cancer
-        }
-    } else if (month == 7) { // July
-        if (day <= 22) {
-            return "C"; // Cancer
-        } else {
-            return "J"; // Leo
-        }
-    } else if (month == 8) { // August
-        if (day <= 22) {
-            return "J"; // Leo
-        } else {
-            return "H"; // Virgo
-        }
-    } else if (month == 9) { // September
-        if (day <= 22) {
-            return "H"; // Virgo
-        } else {
-            return "I"; // Libra
-        }
-    } else if (month == 10) { // October
-        if (day <= 22) {
-            return "I"; // Libra
-        } else {
-            return "G"; // Scorpio
-        }
-    } else if (month == 11) { // November
-        if (day <= 21) {
-            return "G"; // Scorpio
-        } else {
-            return "E"; // Sagittarius
-        }
-    } else if (month == 12) { // December
-        if (day <= 21) {
-            return "E"; // Sagittarius
-        } else {
-            return "B"; // Capricorn
-        }
-    } else {
-        return "w"; // Default to Aries if month is invalid
-    }
-}
-
-     */  
-
 
 
 /*
