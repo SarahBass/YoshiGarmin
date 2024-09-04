@@ -138,14 +138,14 @@ function onUpdate(dc as Dc) as Void {
                                                    */
 
    //Draw Background
-    var water= waterPhase(today.sec);
+    var water= waterPhase(userSTEPS+3000);
     water.draw(dc);
     //Draw Sprite
     var dog = dogPhase(today.sec,userSTEPS); //userSTEPS or (today.sec*180) fix 15 and 16 and 17 to be higher
     dog.draw(dc);
    //Draw Moon and Battery
     moon1.draw(dc);
-    var shift=-20;
+    var shift=-25;
     var digitHour=(digitPhase(hours/10,-115+shift));
     
 if (System.getDeviceSettings().is24Hour || hours/10> 0){
@@ -360,7 +360,7 @@ function dogPhase(seconds, steps){
 }
 
 //DrawOpacityGraphic - dog -
-function waterPhase(seconds){
+function waterPhase(steps){
   var screenHeightY = System.getDeviceSettings().screenHeight;
   //var screenWidthX = System.getDeviceSettings().screenWidth;
   var venus2X = screenHeightY -460;
@@ -369,7 +369,6 @@ function waterPhase(seconds){
 
       if (screenHeightY > 400){
    venus2Y = venus2Y+30;
-    venus2X = 0-(seconds%30);
    }
     //Size Variations Pixel Circle
     //360 VenuS2 - The Model I designed it for 
@@ -388,14 +387,60 @@ function waterPhase(seconds){
    venus2Y = (220*screenHeightY/360);
    venus2X = 130*screenWidthX/360;
   }*/
-  var waterARRAY = [
+
+    var waterArray = [
     (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.water0,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        }))
-        ];
-return  waterARRAY[0];  
+        :rezId => Rez.Drawables.water0,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water1,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water2,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water3,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water4,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water5,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water6,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water7,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water8,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.water9,
+        :locX => venus2X,
+        :locY => venus2Y
+    }))
+];
+return waterArray[steps/1000];  
   
 }
 
