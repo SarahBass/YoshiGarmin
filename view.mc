@@ -145,16 +145,18 @@ function onUpdate(dc as Dc) as Void {
     dog.draw(dc);
    //Draw Moon and Battery
     moon1.draw(dc);
-    var shift=0;
-
-if (!System.getDeviceSettings().is24Hour && hours== 0){
-    shift = -20; } 
+    var shift=-20;
+    var digitHour=(digitPhase(hours/10,-115+shift));
+    
+if (System.getDeviceSettings().is24Hour || hours/10> 0){
+    shift = 0;
+    digitHour.draw(dc);
+     } 
 
     var digitColon=(digitPhase(10,-25+shift));
     digitColon.draw(dc);
     
-    var digitHour=(digitPhase(hours/10,-115+shift));
-    digitHour.draw(dc);
+
     var digitHours=(digitPhase(hours%10,-65+shift));
     digitHours.draw(dc);
 
