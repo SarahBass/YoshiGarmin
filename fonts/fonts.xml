@@ -1,0 +1,5 @@
+<fonts>
+<font id = "smallFont" filename = "xsmall.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}:~  #^$[]@*+_%=~.?,-"/>
+<font id = "bigFont" filename = "starwarsbestNumbers.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%@{}=: ^()[?]_%.,-"/>
+<font id = "funFont" filename = "halloween40.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%@+{}=: >^()[?]_%.,-"/>
+</fonts>
