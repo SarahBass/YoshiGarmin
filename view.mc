@@ -138,7 +138,7 @@ function onUpdate(dc as Dc) as Void {
                                                    */
 
    //Draw Background
-    var water= waterPhase(userSTEPS+3000);
+    var water= waterPhase(userSTEPS+10000);
     water.draw(dc);
     //Draw Sprite
     var dog = dogPhase(today.sec,userSTEPS); //userSTEPS or (today.sec*180) fix 15 and 16 and 17 to be higher
@@ -440,8 +440,10 @@ function waterPhase(steps){
         :locY => venus2Y
     }))
 ];
+if (steps>9999){return waterArray[9];  }
+else{
 return waterArray[steps/1000];  
-  
+}
 }
 
 
