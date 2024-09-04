@@ -145,6 +145,23 @@ function onUpdate(dc as Dc) as Void {
     dog.draw(dc);
    //Draw Moon and Battery
     moon1.draw(dc);
+    var shift=0;
+
+if (!System.getDeviceSettings().is24Hour && hours== 0){
+    shift = -20; } 
+
+    var digitColon=(digitPhase(10,-25+shift));
+    digitColon.draw(dc);
+    
+    var digitHour=(digitPhase(hours/10,-115+shift));
+    digitHour.draw(dc);
+    var digitHours=(digitPhase(hours%10,-65+shift));
+    digitHours.draw(dc);
+
+    var digitSec=(digitPhase(today.min/10,25+shift));
+    digitSec.draw(dc);
+    var digitSecT=(digitPhase(today.min%10,75+shift));
+    digitSecT.draw(dc);
 
     //Draw Top Font
     dc.setColor(0x000000, Graphics.COLOR_TRANSPARENT);  
@@ -215,14 +232,10 @@ function weather(cond) {
 function dogPhase(seconds, steps){
   var screenHeightY = System.getDeviceSettings().screenHeight;
   var screenWidthX = System.getDeviceSettings().screenWidth;
-  var venus2X = (244*screenWidthX/360)-((seconds%5)*10);
+  var venus2X = (screenWidthX)*2/3;
+  //var venus2X = (screenWidthX)-((seconds%20)*20);
   var venus2Y = (230*screenHeightY/360);
- if (seconds%10>5){
-    venus2X = (244*screenWidthX/360)-((seconds%5)*10);
- }
- else{
-venus2X = (214*screenWidthX/360)+((seconds%5)*10);
- }
+
 
     if (screenHeightY > 400){
    venus2Y = venus2Y+30;
@@ -333,387 +346,12 @@ venus2X = (214*screenWidthX/360)+((seconds%5)*10);
     :rezId=>Rez.Drawables.dog20,
     :locX=> venus2X,
     :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog21,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog22,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog23,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog24,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog25,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog26,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog27,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog28,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog29,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog30,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog31,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog32,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog33,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog34,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog35,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog36,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog37,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog38,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog39,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog40,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog41,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog42,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog43,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog44,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog45,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog46,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog47,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog48,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog49,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog50,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog51,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog52,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog53,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog54,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog55,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog56,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog57,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog58,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog59,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog60,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog61,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog62,
-    :locX=> venus2X,
-    :locY=>venus2Y-100
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog63,
-    :locX=> venus2X,
-    :locY=>venus2Y-100
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog64,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog65,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog66,
-    :locX=> venus2X,
-    :locY=>venus2Y-50
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog67,
-    :locX=> venus2X,
-    :locY=>venus2Y-50
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog68,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog69,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog70,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog71,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog72,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog73,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog74,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog75,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog76,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog77,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog78,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog79,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog80,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog81,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog82,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog83,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog84,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog85,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog86,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog87,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog88,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog89,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog90,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog91,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog92,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog93,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog94,
-    :locX=> venus2X,
-    :locY=>venus2Y
-})),
-(new WatchUi.Bitmap({
-    :rezId=>Rez.Drawables.dog95,
-    :locX=> venus2X,
-    :locY=>venus2Y
 }))
         ];
-    if (seconds%10>5){
-        return dogARRAY[(steps/360) + seconds%2 ];}
+    if (steps>10000){
+        return dogARRAY[(19) + seconds%2 ];}
     else{
-        return dogARRAY[(steps/360)+2 + seconds%2 ];
+        return dogARRAY[(steps/1000)+8 + seconds%2 ];
         }
        
         
@@ -723,7 +361,7 @@ venus2X = (214*screenWidthX/360)+((seconds%5)*10);
 function waterPhase(seconds){
   var screenHeightY = System.getDeviceSettings().screenHeight;
   //var screenWidthX = System.getDeviceSettings().screenWidth;
-  var venus2X = 0;
+  var venus2X = screenHeightY -460;
  // var venus2Y = 15;
   var venus2Y = screenHeightY -454;
 
@@ -911,10 +549,74 @@ function moonArrFun(moonnumber){
         ];
         return moonArray[moonnumber];
 }
-
-
 }
 
+function digitPhase(seconds, push){
+    
+  var screenHeightY = System.getDeviceSettings().screenHeight;
+  //var screenWidthX = System.getDeviceSettings().screenWidth;
+  var venus2X = screenHeightY/2+push;
+ // var venus2Y = 15;
+  var venus2Y = screenHeightY/3;
+var digitArray = [
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit0,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit1,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit2,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit3,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit4,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit5,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit6,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit7,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit8,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+    (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.digit9,
+        :locX => venus2X,
+        :locY => venus2Y
+    })),
+        (new WatchUi.Bitmap({
+        :rezId => Rez.Drawables.colon,
+        :locX => venus2X,
+        :locY => venus2Y
+    }))
+];
+return digitArray[seconds];
+}
 /* 
        Horoscope, Zodiac, and Weather Font:
         A FAR
